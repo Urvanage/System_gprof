@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 typedef struct {
     int n;
     char** map;
-    int** cst;     
-    int** visit;   
+    int** cst;
+    int** visit;
 }MAP;
 
 typedef struct {
@@ -24,15 +23,14 @@ int getNfromMAP(MAP* m) {
 }
 
 void allocate_arr(MAP* m) {
-    int len = getNfromMAP(m);
-    m->map = (char**)malloc((len + 2) * sizeof(char*)); //getNfromMAP;
-    m->cst = (int**)malloc((len+ 2) * sizeof(int*));
-    m->visit = (int**)malloc((len + 2) * sizeof(int*));
+    m->map = (char**)malloc((getNfromMAP(m) + 2) * sizeof(char*));
+    m->cst = (int**)malloc((getNfromMAP(m) + 2) * sizeof(int*));
+    m->visit = (int**)malloc((getNfromMAP(m) + 2) * sizeof(int*));
 
-    for (int i = 0; i < len + 2; i++) {
-        m->map[i] = (char*)malloc((len+ 2) * sizeof(char));
-        m->cst[i] = (int*)malloc((len + 2) * sizeof(int));
-        m->visit[i] = (int*)malloc((len+ 2) * sizeof(int));
+    for (int i = 0; i < getNfromMAP(m) + 2; i++) {
+        m->map[i] = (char*)malloc((getNfromMAP(m) + 2) * sizeof(char));
+        m->cst[i] = (int*)malloc((getNfromMAP(m) + 2) * sizeof(int));
+        m->visit[i] = (int*)malloc((getNfromMAP(m) + 2) * sizeof(int));
     }
 }
 
@@ -54,15 +52,14 @@ char choosech() {
 }
 
 int chooseint() {
-    int random = rand() % 500 + 1;
+    int random = rand() % 100 + 1;
     return random;
 }
 
 void init_arr(MAP* m) {
-    int len = getNfromMAP(m);
-    for (int i = 1; i <= len + 1; i++) {
-        for (int j = 1; j <= len + 1; j++) {
-            if (i <= len && j <= len) {
+    for (int i = 1; i <= getNfromMAP(m) + 1; i++) {
+        for (int j = 1; j <= getNfromMAP(m) + 1; j++) {
+            if (i <= getNfromMAP(m) && j <= getNfromMAP(m)) {
                 m->map[i][j] = choosech();
                 m->cst[i][j] = 0;
             }
@@ -76,8 +73,7 @@ void init_arr(MAP* m) {
 }
 
 void free_arr(MAP* m) {
-    int len = getNfromMAP(m);
-    for (int i = 0; i < len + 2; i++) {
+    for (int i = 0; i < getNfromMAP(m) + 2; i++) {
         free(m->map[i]);
         free(m->cst[i]);
         free(m->visit[i]);
@@ -88,9 +84,8 @@ void free_arr(MAP* m) {
 }
 
 void to_uppercase_arr(MAP* m) {
-    int len = getNfromMAP(m);
-    for (int i = 1; i <= len; i++) {
-        for (int j = 1; j <= len; j++) {
+    for (int i = 1; i <= getNfromMAP(m); i++) {
+        for (int j = 1; j <= getNfromMAP(m); j++) {
             if (m->map[i][j] >= 'a' && m->map[i][j] <= 'z') {
                 m->map[i][j] += (-'a' + 'A');
             }
@@ -106,11 +101,11 @@ void fill_random_map(MAP* m) {
 }
 
 void print_map(MAP* m) {
-    int len = getNfromMAP(m);
-    for (int i = 1; i <= len+ 1; i++) {
-        for (int j = 1; j <=len+ 1; j++) {
-            if (i <=len && j <= len) printf("%c ", m->map[i][j]);
-            else if (i != len + 1 || j != len + 1) printf("%d ", m->cst[i][j]);
+
+    for (int i = 1; i <= getNfromMAP(m) + 1; i++) {
+        for (int j = 1; j <= getNfromMAP(m) + 1; j++) {
+            if (i <= getNfromMAP(m) && j <= getNfromMAP(m)) printf("%c ", m->map[i][j]);
+            else if (i != getNfromMAP(m) + 1 || j != getNfromMAP(m) + 1) printf("%d ", m->cst[i][j]);
         }
         printf("\n");
     }
@@ -118,7 +113,7 @@ void print_map(MAP* m) {
 
 void update(int x, int y, int num, MAP* m) {
     int nex, ney;
-    int len = getNfromMAP(m);
+
     if (m->map[x][y] == 'R') {
         nex = x;
         ney = y + 1;
@@ -128,9 +123,9 @@ void update(int x, int y, int num, MAP* m) {
         ney = y;
     }
 
-    if (1 <= nex && nex <= len + 1 && 1 <= ney && ney <= len+ 1) {
+    if (1 <= nex && nex <= getNfromMAP(m) + 1 && 1 <= ney && ney <= getNfromMAP(m) + 1) {
         m->visit[nex][ney] += num;
-        if (nex == len + 1 || ney == len+ 1) {
+        if (nex == getNfromMAP(m) + 1 || ney == getNfromMAP(m) + 1) {
             return;
         }
         else {
@@ -141,7 +136,6 @@ void update(int x, int y, int num, MAP* m) {
 
 void dfs(int x, int y, MAP* m) {
     int nex, ney;
-    int len = getNfromMAP(m);
 
     if (m->map[x][y] == 'R') {
         nex = x;
@@ -152,8 +146,8 @@ void dfs(int x, int y, MAP* m) {
         ney = y;
     }
 
-    if (1 <= nex && nex <= len+ 1 && 1 <= ney && ney <= len + 1) {
-        if (nex == len + 1 || ney ==len+ 1) {
+    if (1 <= nex && nex <= getNfromMAP(m) + 1 && 1 <= ney && ney <= getNfromMAP(m) + 1) {
+        if (nex == getNfromMAP(m) + 1 || ney == getNfromMAP(m) + 1) {
             m->visit[nex][ney] = m->visit[x][y];
             return;
         }
@@ -171,24 +165,22 @@ void dfs(int x, int y, MAP* m) {
 }
 
 void init_visit(MAP* m) {
-    int len = getNfromMAP(m);
 
-    for (int i = 0; i < len + 2; i++) {
-        for (int j = 0; j < len+ 2; j++) {
+    for (int i = 0; i < getNfromMAP(m) + 2; i++) {
+        for (int j = 0; j < getNfromMAP(m) + 2; j++) {
             m->visit[i][j] = 0;
         }
     }
 }
 
 void count_total(long long int* total, MAP* m) {
-    int len = getNfromMAP(m);
 
-    for (int i = 1; i <= len + 1; i++) {
-        *total = *total + m->cst[i][len + 1] * m->visit[i][len + 1];
+    for (int i = 1; i <= getNfromMAP(m); i++) {
+        *total = *total + m->cst[i][getNfromMAP(m) + 1] * m->visit[i][getNfromMAP(m) + 1];
     }
 
-    for (int j = 1; j <= len + 1; j++) {
-        *total = *total + m->cst[len+ 1][j] * m->visit[len+ 1][j];
+    for (int j = 1; j <= getNfromMAP(m); j++) {
+        *total = *total + m->cst[getNfromMAP(m) + 1][j] * m->visit[getNfromMAP(m) + 1][j];
     }
 
     printf("%lld\n", *total);
@@ -198,10 +190,9 @@ void count_total(long long int* total, MAP* m) {
 void solution(MAP* m, long long int* total) {
 
     init_visit(m);
-    int len = getNfromMAP(m);
 
-    for (int i = 1; i <= len; i++) {
-        for (int j = 1; j <= len; j++) {
+    for (int i = 1; i <= getNfromMAP(m); i++) {
+        for (int j = 1; j <= getNfromMAP(m); j++) {
             if (m->visit[i][j] == 0) {
                 m->visit[i][j] = 1;
                 dfs(i, j, m);
@@ -223,17 +214,16 @@ void changedir(int x, int y, MAP* m) {
 }
 
 void insert(List* list, MAP* m) {
-    int len = getNfromMAP(m);
 
-    list->arr = (int*)malloc(sizeof(int) * (len * 2));
+    list->arr = (int*)malloc(sizeof(int) * (getNfromMAP(m) * 2));
     list->n = 0;
 
-    for (int i = 1; i <= len+ 1; i++) {
-        list->arr[(list->n)++] = m->visit[i][len + 1] * m->cst[i][len + 1];
+    for (int i = 1; i <= getNfromMAP(m); i++) {
+        list->arr[(list->n)++] = m->visit[i][getNfromMAP(m) + 1] * m->cst[i][getNfromMAP(m) + 1];
     }
 
-    for (int j = 1; j <= len + 1; j++) {
-        list->arr[(list->n)++] = m->visit[len + 1][j] * m->cst[len+ 1][j];
+    for (int j = 1; j <= getNfromMAP(m); j++) {
+        list->arr[(list->n)++] = m->visit[getNfromMAP(m) + 1][j] * m->cst[getNfromMAP(m) + 1][j];
     }
 }
 
@@ -241,10 +231,10 @@ int getNfromList(List* list) {
     return list->n;
 }
 
-void sortList(List* list,int type) {
+void sortList(List* list, int type) {
 
-    if (type == 0) {
-        for (int i = 0; i < getNfromList(list)- 1; i++) {
+    if (type == 1) {
+        for (int i = 0; i < getNfromList(list) - 1; i++) {
             for (int j = i + 1; j < getNfromList(list); j++) {
                 if (list->arr[i] < list->arr[j]) {
                     int tmp = list->arr[j];
@@ -277,7 +267,11 @@ void print_list(List* list) {
 void do_list_jobs(List* list, MAP* m) {
     insert(list, m);
     int random = rand() % 2;
-    sortList(list,random);
+    sortList(list, random);
+    if (random == 0) {
+        printf("Ascending order sorted: \n");
+    }
+    else printf("Descending order sorted: \n");
     print_list(list);
 }
 
@@ -290,18 +284,26 @@ int main() {
 
     fill_random_map(&m);
 
-    solution(&m,&total);
-    
-    int Q = chooseint()+200;
-
-    for(int i=0;i<Q;i++){
-        int x = chooseint()%m.n+1,y = chooseint()%m.n+1;
-        changedir(x,y,&m);
-	solution(&m,&total);
-    }
- 
+    printf("%dX%d map created!\n\n", m.n, m.n);
     print_map(&m);
-    
+    printf("\n");
+
+    solution(&m, &total);
+
+    int Q = chooseint()%500+100;
+    printf("There will be %d following changing directions!\n", Q);
+
+    for (int i = 0; i < Q; i++) {
+        int x = chooseint() % m.n + 1, y = chooseint() % m.n + 1;
+        total = 0;
+        update(x, y, -m.visit[x][y], &m);
+        changedir(x, y, &m);
+        update(x, y, m.visit[x][y], &m);
+        printf("[%d] (%d,%d) : ", i + 1, x, y);
+        count_total(&total, &m);
+
+    }
+
     do_list_jobs(&list, &m);
 
     free_arr(&m);
