@@ -1,0 +1,279 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+ 92.36    452.01   452.01 54285007     0.00     0.00  update
+  5.13    477.11    25.09 2982182611     0.00     0.00  getNfromMAP
+  1.01    482.04     4.93 54489225     0.00     0.00  dfs
+  0.99    486.88     4.84        1     4.84     4.84  make_random_N
+  0.45    489.07     2.20      203     0.01     2.39  solution
+  0.06    489.35     0.28      203     0.00     0.00  init_visit
+  0.00    489.36     0.01      203     0.00     0.00  count_total
+  0.00    489.37     0.01        1     0.01     0.01  init_arr
+  0.00    489.38     0.01        1     0.01     0.01  print_map
+  0.00    489.39     0.01        1     0.01     0.01  sortList
+  0.00    489.39     0.00  2151772     0.00     0.00  getNfromList
+  0.00    489.39     0.00  1071225     0.00     0.00  choosech
+  0.00    489.39     0.00     2476     0.00     0.00  chooseint
+  0.00    489.39     0.00      202     0.00     0.00  changedir
+  0.00    489.39     0.00        1     0.00     0.00  allocate_arr
+  0.00    489.39     0.00        1     0.00     0.01  do_list_jobs
+  0.00    489.39     0.00        1     0.00     4.85  fill_random_map
+  0.00    489.39     0.00        1     0.00     0.00  free_arr
+  0.00    489.39     0.00        1     0.00     0.00  insert
+  0.00    489.39     0.00        1     0.00     0.00  print_list
+  0.00    489.39     0.00        1     0.00     0.00  to_uppercase_arr
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.00% of 489.39 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]    100.0    0.00  489.39                 main [1]
+                2.20  482.32     203/203         solution [2]
+                0.00    4.85       1/1           fill_random_map [6]
+                0.00    0.01       1/1           do_list_jobs [10]
+                0.01    0.00       1/1           print_map [12]
+                0.00    0.00       1/1           free_arr [15]
+                0.00    0.00     405/2476        chooseint [20]
+                0.00    0.00     202/202         changedir [21]
+-----------------------------------------------
+                2.20  482.32     203/203         main [1]
+[2]     99.0    2.20  482.32     203         solution [2]
+                4.93  477.10 54489225/54489225     dfs [3]
+                0.28    0.00     203/203         init_visit [8]
+                0.01    0.00     203/203         count_total [9]
+                0.00    0.00     203/2982182611     getNfromMAP [5]
+-----------------------------------------------
+                             162969450             dfs [3]
+                4.93  477.10 54489225/54489225     solution [2]
+[3]     98.5    4.93  477.10 54489225+162969450 dfs [3]
+              452.01   23.26 54285007/54285007     update [4]
+                1.83    0.00 217458675/2982182611     getNfromMAP [5]
+                             162969450             dfs [3]
+-----------------------------------------------
+                             2710438314             update [4]
+              452.01   23.26 54285007/54285007     dfs [3]
+[4]     97.1  452.01   23.26 54285007+2710438314 update [4]
+               23.26    0.00 2764723321/2982182611     getNfromMAP [5]
+                             2710438314             update [4]
+-----------------------------------------------
+                0.00    0.00       1/2982182611     allocate_arr [14]
+                0.00    0.00       1/2982182611     init_arr [11]
+                0.00    0.00       1/2982182611     free_arr [15]
+                0.00    0.00       1/2982182611     to_uppercase_arr [17]
+                0.00    0.00       1/2982182611     print_map [12]
+                0.00    0.00       1/2982182611     insert [16]
+                0.00    0.00     203/2982182611     init_visit [8]
+                0.00    0.00     203/2982182611     count_total [9]
+                0.00    0.00     203/2982182611     solution [2]
+                1.83    0.00 217458675/2982182611     dfs [3]
+               23.26    0.00 2764723321/2982182611     update [4]
+[5]      5.1   25.09    0.00 2982182611         getNfromMAP [5]
+-----------------------------------------------
+                0.00    4.85       1/1           main [1]
+[6]      1.0    0.00    4.85       1         fill_random_map [6]
+                4.84    0.00       1/1           make_random_N [7]
+                0.01    0.00       1/1           init_arr [11]
+                0.00    0.00       1/1           allocate_arr [14]
+                0.00    0.00       1/1           to_uppercase_arr [17]
+-----------------------------------------------
+                4.84    0.00       1/1           fill_random_map [6]
+[7]      1.0    4.84    0.00       1         make_random_N [7]
+-----------------------------------------------
+                0.28    0.00     203/203         solution [2]
+[8]      0.1    0.28    0.00     203         init_visit [8]
+                0.00    0.00     203/2982182611     getNfromMAP [5]
+-----------------------------------------------
+                0.01    0.00     203/203         solution [2]
+[9]      0.0    0.01    0.00     203         count_total [9]
+                0.00    0.00     203/2982182611     getNfromMAP [5]
+-----------------------------------------------
+                0.00    0.01       1/1           main [1]
+[10]     0.0    0.00    0.01       1         do_list_jobs [10]
+                0.01    0.00       1/1           sortList [13]
+                0.00    0.00       1/1           insert [16]
+                0.00    0.00       1/1           print_list [22]
+-----------------------------------------------
+                0.01    0.00       1/1           fill_random_map [6]
+[11]     0.0    0.01    0.00       1         init_arr [11]
+                0.00    0.00       1/2982182611     getNfromMAP [5]
+                0.00    0.00 1071225/1071225     choosech [19]
+                0.00    0.00    2071/2476        chooseint [20]
+-----------------------------------------------
+                0.01    0.00       1/1           main [1]
+[12]     0.0    0.01    0.00       1         print_map [12]
+                0.00    0.00       1/2982182611     getNfromMAP [5]
+-----------------------------------------------
+                0.01    0.00       1/1           do_list_jobs [10]
+[13]     0.0    0.01    0.00       1         sortList [13]
+                0.00    0.00 2149699/2151772     getNfromList [18]
+-----------------------------------------------
+                0.00    0.00       1/1           fill_random_map [6]
+[14]     0.0    0.00    0.00       1         allocate_arr [14]
+                0.00    0.00       1/2982182611     getNfromMAP [5]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[15]     0.0    0.00    0.00       1         free_arr [15]
+                0.00    0.00       1/2982182611     getNfromMAP [5]
+-----------------------------------------------
+                0.00    0.00       1/1           do_list_jobs [10]
+[16]     0.0    0.00    0.00       1         insert [16]
+                0.00    0.00       1/2982182611     getNfromMAP [5]
+-----------------------------------------------
+                0.00    0.00       1/1           fill_random_map [6]
+[17]     0.0    0.00    0.00       1         to_uppercase_arr [17]
+                0.00    0.00       1/2982182611     getNfromMAP [5]
+-----------------------------------------------
+                0.00    0.00    2073/2151772     print_list [22]
+                0.00    0.00 2149699/2151772     sortList [13]
+[18]     0.0    0.00    0.00 2151772         getNfromList [18]
+-----------------------------------------------
+                0.00    0.00 1071225/1071225     init_arr [11]
+[19]     0.0    0.00    0.00 1071225         choosech [19]
+-----------------------------------------------
+                0.00    0.00     405/2476        main [1]
+                0.00    0.00    2071/2476        init_arr [11]
+[20]     0.0    0.00    0.00    2476         chooseint [20]
+-----------------------------------------------
+                0.00    0.00     202/202         main [1]
+[21]     0.0    0.00    0.00     202         changedir [21]
+-----------------------------------------------
+                0.00    0.00       1/1           do_list_jobs [10]
+[22]     0.0    0.00    0.00       1         print_list [22]
+                0.00    0.00    2073/2151772     getNfromList [18]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [14] allocate_arr            [6] fill_random_map         [7] make_random_N
+  [21] changedir              [15] free_arr               [22] print_list
+  [19] choosech               [18] getNfromList           [12] print_map
+  [20] chooseint               [5] getNfromMAP             [2] solution
+   [9] count_total            [11] init_arr               [13] sortList
+   [3] dfs                     [8] init_visit             [17] to_uppercase_arr
+  [10] do_list_jobs           [16] insert                  [4] update
