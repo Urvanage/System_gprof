@@ -3,27 +3,27 @@ Flat profile:
 Each sample counts as 0.01 seconds.
   %   cumulative   self              self     total           
  time   seconds   seconds    calls   s/call   s/call  name    
- 91.43      1.92     1.92   267812     0.00     0.00  update
-  5.24      2.03     0.11 185584414     0.00     0.00  getNfromMAP
-  1.43      2.06     0.03   268414     0.00     0.00  dfs
-  0.95      2.08     0.02        1     0.02     0.02  make_random_N
-  0.48      2.09     0.01      203     0.00     0.00  count_total
-  0.48      2.10     0.01        1     0.01     2.07  solution
-  0.00      2.10     0.00  1071225     0.00     0.00  choosech
-  0.00      2.10     0.00     2476     0.00     0.00  chooseint
-  0.00      2.10     0.00      202     0.00     0.00  changedir
-  0.00      2.10     0.00        2     0.00     0.00  getNfromList
-  0.00      2.10     0.00        1     0.00     0.00  allocate_arr
-  0.00      2.10     0.00        1     0.00     0.00  do_list_jobs
-  0.00      2.10     0.00        1     0.00     0.02  fill_random_map
-  0.00      2.10     0.00        1     0.00     0.00  free_arr
-  0.00      2.10     0.00        1     0.00     0.00  init_arr
-  0.00      2.10     0.00        1     0.00     0.00  init_visit
-  0.00      2.10     0.00        1     0.00     0.00  insert
-  0.00      2.10     0.00        1     0.00     0.00  print_list
-  0.00      2.10     0.00        1     0.00     0.00  print_map
-  0.00      2.10     0.00        1     0.00     0.00  sortList
-  0.00      2.10     0.00        1     0.00     0.00  to_uppercase_arr
+ 88.79      1.98     1.98   267612     0.00     0.00  update
+  6.50      2.12     0.14 184339087     0.00     0.00  getNfromMAP
+  1.57      2.16     0.04        1     0.04     0.04  print_map
+  1.12      2.19     0.03        1     0.03     0.03  make_random_N
+  0.67      2.20     0.01   268414     0.00     0.00  dfs
+  0.45      2.21     0.01      103     0.00     0.00  count_total
+  0.45      2.22     0.01        1     0.01     0.01  init_arr
+  0.45      2.23     0.01        1     0.01     0.01  to_uppercase_arr
+  0.00      2.23     0.00  2147625     0.00     0.00  getNfromList
+  0.00      2.23     0.00  1071225     0.00     0.00  choosech
+  0.00      2.23     0.00     2276     0.00     0.00  chooseint
+  0.00      2.23     0.00      102     0.00     0.00  changedir
+  0.00      2.23     0.00        1     0.00     0.00  allocate_arr
+  0.00      2.23     0.00        1     0.00     0.00  do_list_jobs
+  0.00      2.23     0.00        1     0.00     0.05  fill_random_map
+  0.00      2.23     0.00        1     0.00     0.00  free_arr
+  0.00      2.23     0.00        1     0.00     0.00  init_visit
+  0.00      2.23     0.00        1     0.00     0.00  insert
+  0.00      2.23     0.00        1     0.00     0.00  print_list
+  0.00      2.23     0.00        1     0.00     2.14  solution
+  0.00      2.23     0.00        1     0.00     0.00  sortList
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -61,127 +61,127 @@ notice and this notice are preserved.
 		     Call graph (explanation follows)
 
 
-granularity: each sample hit covers 4 byte(s) for 0.48% of 2.10 seconds
+granularity: each sample hit covers 4 byte(s) for 0.45% of 2.23 seconds
 
 index % time    self  children    called     name
                                                  <spontaneous>
-[1]    100.0    0.00    2.10                 main [1]
-                0.01    2.06       1/1           solution [2]
-                0.00    0.02       1/1           fill_random_map [6]
-                0.01    0.00     202/203         count_total [8]
-                0.00    0.00     404/267812      update [4]
-                0.00    0.00       1/1           print_map [16]
-                0.00    0.00       1/1           free_arr [12]
-                0.00    0.00       1/1           do_list_jobs [11]
-                0.00    0.00     405/2476        chooseint [18]
-                0.00    0.00     202/202         changedir [19]
+[1]    100.0    0.00    2.23                 main [1]
+                0.00    2.14       1/1           solution [2]
+                0.00    0.05       1/1           fill_random_map [6]
+                0.04    0.00       1/1           print_map [7]
+                0.01    0.00     102/103         count_total [9]
+                0.00    0.00     204/267612      update [4]
+                0.00    0.00       1/1           free_arr [14]
+                0.00    0.00       1/1           do_list_jobs [13]
+                0.00    0.00     205/2276        chooseint [19]
+                0.00    0.00     102/102         changedir [20]
 -----------------------------------------------
-                0.01    2.06       1/1           main [1]
-[2]     98.4    0.01    2.06       1         solution [2]
-                0.03    2.03  268414/268414      dfs [3]
-                0.00    0.00       1/203         count_total [8]
-                0.00    0.00       1/185584414     getNfromMAP [5]
-                0.00    0.00       1/1           init_visit [14]
+                0.00    2.14       1/1           main [1]
+[2]     95.9    0.00    2.14       1         solution [2]
+                0.01    2.12  268414/268414      dfs [3]
+                0.00    0.00       1/103         count_total [9]
+                0.00    0.00       1/184339087     getNfromMAP [5]
+                0.00    0.00       1/1           init_visit [15]
 -----------------------------------------------
                               802811             dfs [3]
-                0.03    2.03  268414/268414      solution [2]
-[3]     97.9    0.03    2.03  268414+802811  dfs [3]
-                1.92    0.11  267408/267812      update [4]
-                0.00    0.00 1071225/185584414     getNfromMAP [5]
+                0.01    2.12  268414/268414      solution [2]
+[3]     95.9    0.01    2.12  268414+802811  dfs [3]
+                1.98    0.14  267408/267612      update [4]
+                0.00    0.00 1071225/184339087     getNfromMAP [5]
                               802811             dfs [3]
 -----------------------------------------------
-                             183171871             update [4]
-                0.00    0.00     404/267812      main [1]
-                1.92    0.11  267408/267812      dfs [3]
-[4]     96.6    1.92    0.11  267812+183171871 update [4]
-                0.11    0.00 183439683/185584414     getNfromMAP [5]
-                             183171871             update [4]
+                             183000139             update [4]
+                0.00    0.00     204/267612      main [1]
+                1.98    0.14  267408/267612      dfs [3]
+[4]     95.3    1.98    0.14  267612+183000139 update [4]
+                0.14    0.00 183267751/184339087     getNfromMAP [5]
+                             183000139             update [4]
 -----------------------------------------------
-                0.00    0.00       1/185584414     allocate_arr [10]
-                0.00    0.00       1/185584414     init_arr [13]
-                0.00    0.00       1/185584414     free_arr [12]
-                0.00    0.00       1/185584414     print_map [16]
-                0.00    0.00       1/185584414     init_visit [14]
-                0.00    0.00       1/185584414     solution [2]
-                0.00    0.00       1/185584414     insert [15]
-                0.00    0.00     203/185584414     count_total [8]
-                0.00    0.00 1071225/185584414     dfs [3]
-                0.00    0.00 1073296/185584414     to_uppercase_arr [9]
-                0.11    0.00 183439683/185584414     update [4]
-[5]      5.2    0.11    0.00 185584414         getNfromMAP [5]
+                0.00    0.00       1/184339087     allocate_arr [12]
+                0.00    0.00       1/184339087     init_arr [10]
+                0.00    0.00       1/184339087     free_arr [14]
+                0.00    0.00       1/184339087     to_uppercase_arr [11]
+                0.00    0.00       1/184339087     print_map [7]
+                0.00    0.00       1/184339087     init_visit [15]
+                0.00    0.00       1/184339087     solution [2]
+                0.00    0.00       1/184339087     insert [16]
+                0.00    0.00     103/184339087     count_total [9]
+                0.00    0.00 1071225/184339087     dfs [3]
+                0.14    0.00 183267751/184339087     update [4]
+[5]      6.5    0.15    0.00 184339087         getNfromMAP [5]
 -----------------------------------------------
-                0.00    0.02       1/1           main [1]
-[6]      1.0    0.00    0.02       1         fill_random_map [6]
-                0.02    0.00       1/1           make_random_N [7]
-                0.00    0.00       1/1           to_uppercase_arr [9]
-                0.00    0.00       1/1           init_arr [13]
-                0.00    0.00       1/1           allocate_arr [10]
+                0.00    0.05       1/1           main [1]
+[6]      2.0    0.00    0.05       1         fill_random_map [6]
+                0.03    0.00       1/1           make_random_N [8]
+                0.01    0.00       1/1           init_arr [10]
+                0.01    0.00       1/1           to_uppercase_arr [11]
+                0.00    0.00       1/1           allocate_arr [12]
 -----------------------------------------------
-                0.02    0.00       1/1           fill_random_map [6]
-[7]      1.0    0.02    0.00       1         make_random_N [7]
+                0.04    0.00       1/1           main [1]
+[7]      1.6    0.04    0.00       1         print_map [7]
+                0.00    0.00       1/184339087     getNfromMAP [5]
 -----------------------------------------------
-                0.00    0.00       1/203         solution [2]
-                0.01    0.00     202/203         main [1]
-[8]      0.5    0.01    0.00     203         count_total [8]
-                0.00    0.00     203/185584414     getNfromMAP [5]
+                0.03    0.00       1/1           fill_random_map [6]
+[8]      1.1    0.03    0.00       1         make_random_N [8]
+-----------------------------------------------
+                0.00    0.00       1/103         solution [2]
+                0.01    0.00     102/103         main [1]
+[9]      0.4    0.01    0.00     103         count_total [9]
+                0.00    0.00     103/184339087     getNfromMAP [5]
+-----------------------------------------------
+                0.01    0.00       1/1           fill_random_map [6]
+[10]     0.4    0.01    0.00       1         init_arr [10]
+                0.00    0.00       1/184339087     getNfromMAP [5]
+                0.00    0.00 1071225/1071225     choosech [18]
+                0.00    0.00    2071/2276        chooseint [19]
+-----------------------------------------------
+                0.01    0.00       1/1           fill_random_map [6]
+[11]     0.4    0.01    0.00       1         to_uppercase_arr [11]
+                0.00    0.00       1/184339087     getNfromMAP [5]
 -----------------------------------------------
                 0.00    0.00       1/1           fill_random_map [6]
-[9]      0.0    0.00    0.00       1         to_uppercase_arr [9]
-                0.00    0.00 1073296/185584414     getNfromMAP [5]
------------------------------------------------
-                0.00    0.00       1/1           fill_random_map [6]
-[10]     0.0    0.00    0.00       1         allocate_arr [10]
-                0.00    0.00       1/185584414     getNfromMAP [5]
+[12]     0.0    0.00    0.00       1         allocate_arr [12]
+                0.00    0.00       1/184339087     getNfromMAP [5]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[11]     0.0    0.00    0.00       1         do_list_jobs [11]
-                0.00    0.00       1/1           insert [15]
+[13]     0.0    0.00    0.00       1         do_list_jobs [13]
+                0.00    0.00       1/1           insert [16]
                 0.00    0.00       1/1           sortList [22]
                 0.00    0.00       1/1           print_list [21]
 -----------------------------------------------
                 0.00    0.00       1/1           main [1]
-[12]     0.0    0.00    0.00       1         free_arr [12]
-                0.00    0.00       1/185584414     getNfromMAP [5]
------------------------------------------------
-                0.00    0.00       1/1           fill_random_map [6]
-[13]     0.0    0.00    0.00       1         init_arr [13]
-                0.00    0.00       1/185584414     getNfromMAP [5]
-                0.00    0.00 1071225/1071225     choosech [17]
-                0.00    0.00    2071/2476        chooseint [18]
+[14]     0.0    0.00    0.00       1         free_arr [14]
+                0.00    0.00       1/184339087     getNfromMAP [5]
 -----------------------------------------------
                 0.00    0.00       1/1           solution [2]
-[14]     0.0    0.00    0.00       1         init_visit [14]
-                0.00    0.00       1/185584414     getNfromMAP [5]
+[15]     0.0    0.00    0.00       1         init_visit [15]
+                0.00    0.00       1/184339087     getNfromMAP [5]
 -----------------------------------------------
-                0.00    0.00       1/1           do_list_jobs [11]
-[15]     0.0    0.00    0.00       1         insert [15]
-                0.00    0.00       1/185584414     getNfromMAP [5]
+                0.00    0.00       1/1           do_list_jobs [13]
+[16]     0.0    0.00    0.00       1         insert [16]
+                0.00    0.00       1/184339087     getNfromMAP [5]
 -----------------------------------------------
-                0.00    0.00       1/1           main [1]
-[16]     0.0    0.00    0.00       1         print_map [16]
-                0.00    0.00       1/185584414     getNfromMAP [5]
+                0.00    0.00    2071/2147625     print_list [21]
+                0.00    0.00 2145554/2147625     sortList [22]
+[17]     0.0    0.00    0.00 2147625         getNfromList [17]
 -----------------------------------------------
-                0.00    0.00 1071225/1071225     init_arr [13]
-[17]     0.0    0.00    0.00 1071225         choosech [17]
+                0.00    0.00 1071225/1071225     init_arr [10]
+[18]     0.0    0.00    0.00 1071225         choosech [18]
 -----------------------------------------------
-                0.00    0.00     405/2476        main [1]
-                0.00    0.00    2071/2476        init_arr [13]
-[18]     0.0    0.00    0.00    2476         chooseint [18]
+                0.00    0.00     205/2276        main [1]
+                0.00    0.00    2071/2276        init_arr [10]
+[19]     0.0    0.00    0.00    2276         chooseint [19]
 -----------------------------------------------
-                0.00    0.00     202/202         main [1]
-[19]     0.0    0.00    0.00     202         changedir [19]
+                0.00    0.00     102/102         main [1]
+[20]     0.0    0.00    0.00     102         changedir [20]
 -----------------------------------------------
-                0.00    0.00       1/2           sortList [22]
-                0.00    0.00       1/2           print_list [21]
-[20]     0.0    0.00    0.00       2         getNfromList [20]
------------------------------------------------
-                0.00    0.00       1/1           do_list_jobs [11]
+                0.00    0.00       1/1           do_list_jobs [13]
 [21]     0.0    0.00    0.00       1         print_list [21]
-                0.00    0.00       1/2           getNfromList [20]
+                0.00    0.00    2071/2147625     getNfromList [17]
 -----------------------------------------------
-                0.00    0.00       1/1           do_list_jobs [11]
+                0.00    0.00       1/1           do_list_jobs [13]
 [22]     0.0    0.00    0.00       1         sortList [22]
-                0.00    0.00       1/2           getNfromList [20]
+                0.00    0.00 2145554/2147625     getNfromList [17]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -274,10 +274,10 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [10] allocate_arr            [6] fill_random_map         [7] make_random_N
-  [19] changedir              [12] free_arr               [21] print_list
-  [17] choosech               [20] getNfromList           [16] print_map
-  [18] chooseint               [5] getNfromMAP             [2] solution
-   [8] count_total            [13] init_arr               [22] sortList
-   [3] dfs                    [14] init_visit              [9] to_uppercase_arr
-  [11] do_list_jobs           [15] insert                  [4] update
+  [12] allocate_arr            [6] fill_random_map         [8] make_random_N
+  [20] changedir              [14] free_arr               [21] print_list
+  [18] choosech               [17] getNfromList            [7] print_map
+  [19] chooseint               [5] getNfromMAP             [2] solution
+   [9] count_total            [10] init_arr               [22] sortList
+   [3] dfs                    [15] init_visit             [11] to_uppercase_arr
+  [13] do_list_jobs           [16] insert                  [4] update
