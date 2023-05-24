@@ -32,7 +32,7 @@ void allocate_arr(MAP* m) {
     for (int i = 0; i < len + 2; i++) {
         m->map[i] = (char*)malloc((len + 2) * sizeof(char));
         m->cst[i] = (int*)malloc((len + 2) * sizeof(int));
-        m->visit[i] = (int*)malloc((len+ 2) * sizeof(int));
+        m->visit[i] = (int*)malloc((len + 2) * sizeof(int));
     }
 }
 
@@ -107,7 +107,7 @@ void fill_random_map(MAP* m) {
 
 void print_map(MAP* m) {
     int len = getNfromMAP(m);
-    for (int i = 1; i <= len+ 1; i++) {
+    for (int i = 1; i <= len + 1; i++) {
         for (int j = 1; j <= len + 1; j++) {
             if (i <= len && j <= len) printf("%c ", m->map[i][j]);
             else if (i != len + 1 || j != len + 1) printf("%d ", m->cst[i][j]);
@@ -169,23 +169,34 @@ void init_visit(MAP* m) {
 }
 
 void count_total(long long int* total, MAP* m) {
- 
-    for (int i = 1; i <= getNfromMAP(m); i++) {
-        *total = *total + m->cst[i][getNfromMAP(m) + 1] * m->visit[i][getNfromMAP(m) + 1];
+    int len = getNfromMAP(m);
+    long long int tmpV1 = 0, tmpV2 = 0;
+    int i, j;
+    for (i = 1; i <= len-1; i+=2) {
+        tmpV1 += m->cst[i][len + 1] * m->visit[i][len + 1];
+        tmpV2 += m->cst[i + 1][len + 1] * m->visit[i + 1][len + 1];
+    }
+    for (; i <= len; i++) {
+        tmpV1 += m->cst[i][len + 1] * m->visit[i][len + 1];
     }
 
-    for (int j = 1; j <= getNfromMAP(m); j++) {
-        *total = *total + m->cst[getNfromMAP(m) + 1][j] * m->visit[getNfromMAP(m) + 1][j];
+    for (j = 1; j <= len-1; j+=2) {
+        tmpV1 += m->cst[len+ 1][j] * m->visit[len+ 1][j];
+        tmpV2 += m->cst[len + 1][j + 1] * m->visit[len + 1][j + 1];
+    }
+    for (; j <= len; j++) {
+        tmpV1 += m->cst[len+1][j] * m->visit[len+1][j];
     }
 
-    printf("%lld\n", *total);
+    printf("%lld\n", tmpV1+tmpV2);
+    *total = tmpV1+tmpV2;
     return;
 }
 
 void solution(MAP* m, long long int* total) {
-    int len = getNfromMAP(m);
-    init_visit(m);
 
+    init_visit(m);
+    int len = getNfromMAP(m);
     for (int i = 1; i <= len; i++) {
         for (int j = 1; j <= len; j++) {
             if (m->visit[i][j] == 0) {
@@ -227,10 +238,10 @@ int getNfromList(List* list) {
 }
 
 void sortList(List* list, int type) {
-
+    int len = getNfromList(list);
     if (type == 1) {
-        for (int i = 0; i < getNfromList(list) - 1; i++) {
-            for (int j = i + 1; j < getNfromList(list); j++) {
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = i + 1; j < len; j++) {
                 if (list->arr[i] < list->arr[j]) {
                     int tmp = list->arr[j];
                     list->arr[j] = list->arr[i];
@@ -240,8 +251,8 @@ void sortList(List* list, int type) {
         }
     }
     else {
-        for (int i = 0; i < getNfromList(list) - 1; i++) {
-            for (int j = i + 1; j < getNfromList(list); j++) {
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = i + 1; j < len; j++) {
                 if (list->arr[i] > list->arr[j]) {
                     int tmp = list->arr[j];
                     list->arr[j] = list->arr[i];
@@ -253,8 +264,8 @@ void sortList(List* list, int type) {
 }
 
 void print_list(List* list) {
-
-    for (int i = 0; i < getNfromList(list); i++) {
+    int len = getNfromList(list);
+    for (int i = 0; i < len; i++) {
         printf("%d ", list->arr[i]);
     }
 }
@@ -287,7 +298,7 @@ int main() {
 
     int Q = 105;
     printf("There will be %d following changing directions!\n", Q);
-    int x, y,now;
+    int x, y, now;
     for (int i = 0; i < Q; i++) {
         x = chooseint() % m.n + 1, y = chooseint() % m.n + 1;
         total = 0;
