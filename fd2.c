@@ -15,6 +15,7 @@ typedef struct {
 
 int make_random_N() {
     int random = rand() % 1000 + 100;
+    random = 1024;
     return random;
 }
 
@@ -112,25 +113,19 @@ void print_map(MAP* m) {
 }
 
 void update(int x, int y, int num, MAP* m) {
-    int nex, ney;
+    int nex = x, ney = y;
+    int len = getNfromMAP(m);
 
-    if (m->map[x][y] == 'R') {
-        nex = x;
-        ney = y + 1;
-    }
-    else {
-        nex = x + 1;
-        ney = y;
-    }
+    if (m->map[x][y] == 'R') ney++;
+    else nex++;
 
-    if (1 <= nex && nex <= getNfromMAP(m) + 1 && 1 <= ney && ney <= getNfromMAP(m) + 1) {
+    while (nex <= len + 1 && ney <= len + 1) {
         m->visit[nex][ney] += num;
-        if (nex == getNfromMAP(m) + 1 || ney == getNfromMAP(m) + 1) {
-            return;
-        }
-        else {
-            update(nex, ney, num, m);
-        }
+
+        if (nex == len + 1 || ney == len + 1) return;
+
+        if (m->map[nex][ney] == 'R') ney++;
+        else nex++;
     }
 }
 
@@ -290,18 +285,15 @@ int main() {
 
     solution(&m, &total);
 
-    int Q = chooseint()%500+100;
+    int Q = 105;
     printf("There will be %d following changing directions!\n", Q);
 
     for (int i = 0; i < Q; i++) {
         int x = chooseint() % m.n + 1, y = chooseint() % m.n + 1;
         total = 0;
-        update(x, y, -m.visit[x][y], &m);
         changedir(x, y, &m);
-        update(x, y, m.visit[x][y], &m);
         printf("[%d] (%d,%d) : ", i + 1, x, y);
-        count_total(&total, &m);
-
+        solution(&m, &total);
     }
 
     do_list_jobs(&list, &m);
