@@ -14,7 +14,8 @@ typedef struct {
 }List;
 
 int make_random_N() {
-    int random = rand() % 1000 + 100;
+    int random = rand()%1000+100;
+    random = 1024;
     return random;
 }
 
@@ -290,7 +291,7 @@ int main() {
 
     solution(&m, &total);
 
-    int Q = chooseint()%500+100;
+    int Q = 105;
     printf("There will be %d following changing directions!\n", Q);
 
     for (int i = 0; i < Q; i++) {
