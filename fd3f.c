@@ -130,7 +130,7 @@ void update(int x, int y, int num, MAP* m) {
 }
 
 void dfs(int x, int y, MAP* m) {
-    int nex=x, ney=y;
+    int nex = x, ney = y;
     int len = getNfromMAP(m);
 
     if (m->map[x][y] == 'R') ney++;
@@ -142,20 +142,16 @@ void dfs(int x, int y, MAP* m) {
             m->visit[nex][ney] = now;
             return;
         }
-        else {
-            if (m->visit[nex][ney] == 0) {
-                m->visit[nex][ney] = 1 + now;
-                x = nex;
-                y = ney;
-                if (m->map[x][y] == 'R') ney++;
-                else nex++;
-            }
-            else {
-                m->visit[nex][ney] += now;
-                update(nex, ney, now, m);
-                return;
-            }
+        if (m->visit[nex][ney] != 0) {
+            m->visit[nex][ney] += now;
+            update(nex, ney, now, m);
+            return;
         }
+        m->visit[nex][ney] = 1 + now;
+        x = nex;
+        y = ney;
+        if (m->map[x][y] == 'R') ney++;
+        else nex++;
     }
 }
 
